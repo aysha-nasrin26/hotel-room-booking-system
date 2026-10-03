@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hotel Room Booking System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            HotelBook
+        </div>
+
+        <nav>
+            <a href="#rooms" class="nav-link active">
+                Rooms
+            </a>
+
+            <a href="#booking" class="nav-link">
+                Booking
+            </a>
+
+            <a href="#management" class="nav-link">
+                Management
+            </a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-label">
+                    HOTEL ROOM BOOKING SYSTEM
+                </p>
+
+                <h1>
+                    Find Your Perfect Room
+                </h1>
+
+                <p>
+                    Browse available rooms and manage
+                    your hotel bookings easily.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button
+                        type="button"
+                        class="hero-btn"
+                        onclick="scrollToSection('rooms')"
+                    >
+                        Explore Rooms
+                    </button>
+
+                    <button
+                        type="button"
+                        class="hero-btn secondary"
+                        onclick="scrollToSection('booking')"
+                    >
+                        Make a Booking
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ROOM CATALOG
+        ========================== -->
+
+        <section
+            class="rooms-section"
+            id="rooms"
+        >
+
+            <div class="section-header">
+
+                <div>
+                    <p class="section-label">
+                        ROOM INVENTORY
+                    </p>
+
+                    <h2>
+                        Room Catalog
+                    </h2>
+
+                    <p>
+                        Explore available rooms and manage
+                        room details.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="addRoomBtn"
+                >
+                    + Add Room
+                </button>
+
+            </div>
+
+
+            <!-- Filters -->
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search room number..."
+                >
+
+                <select id="roomTypeFilter">
+
+                    <option value="">
+                        All Room Types
+                    </option>
+
+                    <option value="Single">
+                        Single
+                    </option>
+
+                    <option value="Double">
+                        Double
+                    </option>
+
+                    <option value="Deluxe">
+                        Deluxe
+                    </option>
+
+                    <option value="Suite">
+                        Suite
+                    </option>
+
+                </select>
+
+
+                <select id="statusFilter">
+
+                    <option value="">
+                        All Status
+                    </option>
+
+                    <option value="AVAILABLE">
+                        Available
+                    </option>
+
+                    <option value="BOOKED">
+                        Booked
+                    </option>
+
+                    <option value="MAINTENANCE">
+                        Maintenance
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Room Cards -->
+
+            <div
+                class="room-grid"
+                id="roomGrid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             BOOKING SECTION
+        ========================== -->
+
+        <section
+            class="booking-section"
+            id="booking"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="section-label">
+                        RESERVATION
+                    </p>
+
+                    <h2>
+                        Room Booking
+                    </h2>
+
+                    <p>
+                        Check availability and confirm
+                        your booking.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="booking-container">
+
+
+                <!-- Selected Room -->
+
+                <div class="selected-room-card">
+
+                    <h3>
+                        Selected Room
+                    </h3>
+
+                    <div id="selectedRoomInfo">
+
+                        <div class="empty-state">
+
+                            <div class="empty-icon">
+                                🏨
+                            </div>
+
+                            <p>
+                                Select an available room
+                                to begin your booking.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Booking Form -->
+
+                <div class="booking-form-card">
+
+                    <h3>
+                        Booking Details
+                    </h3>
+
+
+                    <form id="bookingForm">
+
+
+                        <label for="bookingRoom">
+                            Room
+                        </label>
+
+                        <select
+                            id="bookingRoom"
+                            required
+                        >
+
+                            <option value="">
+                                Select a room
+                            </option>
+
+                        </select>
+
+
+
+                        <div class="date-row">
+
+
+                            <div>
+
+                                <label for="checkInDate">
+                                    Check-in
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="checkInDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div>
+
+                                <label for="checkOutDate">
+                                    Check-out
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="checkOutDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button
+                            type="button"
+                            id="checkAvailabilityBtn"
+                            class="primary-btn"
+                        >
+                            Check Availability
+                        </button>
+
+
+                        <div
+                            id="availabilityMessage"
+                            class="availability-message"
+                        ></div>
+
+
+
+                        <label for="guestName">
+                            Guest Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="guestName"
+                            placeholder="Enter guest name"
+                            required
+                        >
+
+
+                        <label for="guestEmail">
+                            Guest Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="guestEmail"
+                            placeholder="Enter guest email"
+                            required
+                        >
+
+
+
+                        <!-- Booking Summary -->
+
+                        <div class="booking-summary">
+
+
+                            <div>
+
+                                <span>
+                                    Price / Night
+                                </span>
+
+                                <strong id="bookingPrice">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Number of Nights
+                                </span>
+
+                                <strong id="bookingNights">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="total-row">
+
+                                <span>
+                                    Total Amount
+                                </span>
+
+                                <strong id="bookingTotal">
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <button
+                            type="submit"
+                            class="confirm-booking-btn"
+                            id="confirmBookingBtn"
+                            disabled
+                        >
+                            Confirm Booking
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             MANAGEMENT SECTION
+        ========================== -->
+
+        <section
+            class="management-section"
+            id="management"
+        >
+
+            <div class="section-header">
+
+                <div>
+
+                    <p class="section-label">
+                        BOOKING OPERATIONS
+                    </p>
+
+                    <h2>
+                        Booking Management
+                    </h2>
+
+                    <p>
+                        Track bookings, cancellations
+                        and room booking history.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Summary Cards -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+
+                    <span class="summary-label">
+                        Total Bookings
+                    </span>
+
+                    <strong id="totalBookings">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span class="summary-label">
+                        Active Bookings
+                    </span>
+
+                    <strong id="activeBookings">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span class="summary-label">
+                        Cancelled
+                    </span>
+
+                    <strong id="cancelledBookings">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span class="summary-label">
+                        Total Revenue
+                    </span>
+
+                    <strong id="totalRevenue">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Booking Filters -->
+
+            <div class="management-toolbar">
+
+                <input
+                    type="text"
+                    id="bookingSearch"
+                    placeholder="Search guest or room..."
+                >
+
+                <select id="bookingStatusFilter">
+
+                    <option value="">
+                        All Booking Status
+                    </option>
+
+                    <option value="CONFIRMED">
+                        Confirmed
+                    </option>
+
+                    <option value="CANCELLED">
+                        Cancelled
+                    </option>
+
+                    <option value="COMPLETED">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- Booking Table -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Booking ID
+                            </th>
+
+                            <th>
+                                Room
+                            </th>
+
+                            <th>
+                                Guest
+                            </th>
+
+                            <th>
+                                Check-in
+                            </th>
+
+                            <th>
+                                Check-out
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="bookingTableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Room Booking History -->
+
+            <div class="history-section">
+
+                <div class="history-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            ROOM HISTORY
+                        </p>
+
+                        <h3>
+                            Room Booking History
+                        </h3>
+
+                    </div>
+
+                    <select id="historyRoomSelect">
+
+                        <option value="">
+                            Select Room
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    id="roomHistory"
+                    class="room-history"
+                >
+
+                    <p class="empty-history">
+                        Select a room to view booking history.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         ADD ROOM MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="roomModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Add New Room
+                </h2>
+
+                <button
+                    type="button"
+                    id="closeModalBtn"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="roomForm">
+
+                <label for="roomNumber">
+                    Room Number
+                </label>
+
+                <input
+                    type="text"
+                    id="roomNumber"
+                    placeholder="Example: 401"
+                    required
+                >
+
+
+                <label for="newRoomType">
+                    Room Type
+                </label>
+
+                <select
+                    id="newRoomType"
+                    required
+                >
+
+                    <option value="">
+                        Select room type
+                    </option>
+
+                    <option value="Single">
+                        Single
+                    </option>
+
+                    <option value="Double">
+                        Double
+                    </option>
+
+                    <option value="Deluxe">
+                        Deluxe
+                    </option>
+
+                    <option value="Suite">
+                        Suite
+                    </option>
+
+                </select>
+
+
+                <label for="roomPrice">
+                    Price Per Night
+                </label>
+
+                <input
+                    type="number"
+                    id="roomPrice"
+                    placeholder="Example: 4500"
+                    min="1"
+                    required
+                >
+
+
+                <label for="roomCapacity">
+                    Capacity
+                </label>
+
+                <input
+                    type="number"
+                    id="roomCapacity"
+                    placeholder="Example: 2"
+                    min="1"
+                    required
+                >
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelRoomBtn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                    >
+                        Add Room
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         EDIT ROOM MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="editRoomModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Update Room
+                </h2>
+
+                <button
+                    type="button"
+                    id="closeEditModalBtn"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="editRoomForm">
+
+
+                <label for="editRoomNumber">
+                    Room Number
+                </label>
+
+                <input
+                    type="text"
+                    id="editRoomNumber"
+                    readonly
+                >
+                <label for="editRoomType">
+                    Room Type
+                </label>
+                <select
+                    id="editRoomType"
+                    required
+                >
+                    <option value="Single">
+                        Single
+                    </option>
+                    <option value="Double">
+                        Double
+                    </option>
+                    <option value="Deluxe">
+                        Deluxe
+                    </option>
+                    <option value="Suite">
+                        Suite
+                    </option>
+                </select>
+                <label for="editRoomPrice">
+                    Price Per Night
+                </label>
+                <input
+                    type="number"
+                    id="editRoomPrice"
+                    min="1"
+                    required
+                >
+                <label for="editRoomCapacity">
+                    Capacity
+                </label>
+                <input
+                    type="number"
+                    id="editRoomCapacity"
+                    min="1"
+                    required
+                >
+                <div class="form-actions">
+                    <button
+                        type="button"
+                        id="cancelEditBtn"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                    >
+                        Update Room
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
