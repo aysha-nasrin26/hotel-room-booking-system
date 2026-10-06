@@ -11,11 +11,9 @@ class RoomCreate(BaseModel):
 
 
 class RoomUpdate(BaseModel):
-    room_number: Optional[str] = None  
     room_type: Optional[Literal["Single", "Double", "Deluxe", "Suite"]] = None
     price_per_night: Optional[float] = Field(None, gt=0)
     capacity: Optional[int] = Field(None, gt=0)
-    status: Optional[str] = None
 
 class RoomResponse(BaseModel):
     id: int
