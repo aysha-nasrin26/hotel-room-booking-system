@@ -1,259 +1,258 @@
 # Hotel Room Booking System
 
-A full-stack Hotel Room Booking System developed as part of the internship project. The application is designed to manage hotel rooms, room availability, and customer bookings through a web-based interface and RESTful backend APIs.
-
 ## Project Overview
 
-The Hotel Room Booking System provides functionality for managing hotel room information and booking operations.
+The Hotel Room Booking System is a web application developed to manage hotel rooms and guest bookings. The application provides a single-page frontend with navigation between Room Catalog, Booking, and Booking Management sections.
 
-The backend is developed using FastAPI with PostgreSQL and SQLAlchemy. The frontend is developed using HTML, CSS, and JavaScript.
+The system allows users to view and manage rooms, create bookings, and manage existing booking records through an interactive web interface.
 
-The current backend provides RESTful APIs for:
+## Features
 
-- Creating rooms
-- Viewing all rooms
-- Viewing a room by ID
-- Updating room information
-- Checking room availability
-- Creating bookings
-- Viewing booking history
-- Cancelling bookings
-- Viewing booking summary
-- Deleting rooms
+### Room Catalog
 
-The backend also includes automated API tests using Pytest.
+* View available hotel rooms
+* Search rooms by room number
+* Filter rooms by room type
+* Filter rooms by room status
+* Add new rooms
+* Update room details
+* Display room availability status
 
-## Technology Stack
+### Booking
+
+* Select a room
+* Enter guest details
+* Select check-in and check-out dates
+* View booking information
+* Confirm bookings
+
+### Booking Management
+
+* View booking records
+* View booking status
+* Cancel bookings
+* Manage room booking information
+
+## Technologies Used
 
 ### Frontend
 
-- HTML5
-- CSS3
-- JavaScript
-- Responsive UI
+* HTML5
+* CSS3
+* JavaScript
 
 ### Backend
 
-- Python
-- FastAPI
-- Uvicorn
-- Pydantic
+* Python
+* FastAPI
+* SQLAlchemy
 
 ### Database
 
-- PostgreSQL
-- SQLAlchemy ORM
+* PostgreSQL
 
-### Testing
+### Development Tools
 
-- Pytest
-- FastAPI TestClient
+* Visual Studio Code
+* Git
+* GitHub
 
 ## Project Structure
 
-```text
-Hotel_Room_Booking_System/
-│
-├── README.md
-│
+hotel-room-booking-system/
+
 ├── backend/
 │   ├── main.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── database.py
 │   ├── requirements.txt
-│   ├── API_DOCUMENTATION.md
-│   │
-│   └── tests/
-│       └── test_room.py
+│   └── .gitignore
 │
-└── frontend/
-    ├── index.html
-    ├── css/
-    │   └── style.css
-    └── js/
-        └── app.js
+├── frontend/
+│   ├── index.html
+│   ├── css/
+│   │   └── style.css
+│   └── js/
+│       └── app.js
+│
+└── README.md
 
-Backend Features
-Room Management
-The backend supports:
-- Create room
-- Get all rooms
-- Get room by ID
-- Update room
-- Delete room
-- Check room availability
-Booking Management
-The backend supports:
-- Create booking
-- Check booking date conflicts
-- View booking history
-- Filter booking history by user
-- Exclude cancelled bookings
-- Cancel booking
-- View booking summary
-Validation
-Pydantic schemas are used for request validation.
-The backend validates:
-- Required fields
-- Room type
-- Positive room price
-- Positive room capacity
-- Booking dates
-- Room existence
-- Booking conflicts
-Database
-PostgreSQL is used as the relational database.
-SQLAlchemy ORM is used to communicate with PostgreSQL.
-The main database models are:
-Room
-Stores:
-- ID
-- Room number
-- Room type
-- Price per night
-- Capacity
-- Status
-- Created date
-Booking
-Stores:
-- Booking ID
-- Room ID
-- User ID
-- Check-in date
-- Check-out date
-- Cancellation status
-A relationship is maintained between rooms and bookings using a foreign key.
-API Documentation
-Detailed API documentation is available in:
-backend/API_DOCUMENTATION.md
+## Frontend Development
 
-FastAPI also provides interactive API documentation through Swagger UI.
-After starting the backend server, open:
-http://127.0.0.1:8002/docs
+The frontend was developed using HTML5, CSS3, and JavaScript.
 
-Alternative documentation:
-http://127.0.0.1:8002/redoc
+The application follows a single-page layout with three main navigation sections:
 
-Backend Setup
-1. Clone the Repository
-git clone YOUR_GITHUB_REPOSITORY_URL
+1. Room Catalog
+2. Booking
+3. Booking Management
 
-Navigate to the project:
-cd Hotel_Room_Booking_System
+Users can navigate between these sections without opening separate HTML pages.
 
-Navigate to the backend:
-cd backend
+### HTML
 
-2. Create Virtual Environment
-Windows:
-python -m venv venv
+HTML5 was used to create the structure of the application, including navigation, room cards, forms, tables, buttons, and booking-related sections.
 
-Activate the virtual environment:
-venv\Scripts\activate
+### CSS
 
-3. Install Dependencies
-pip install -r requirements.txt
+CSS3 was used for layout, styling, spacing, forms, buttons, room cards, tables, and responsive design.
 
-4. Configure Database
-Create a .env file inside the backend directory.
-Example:
-DATABASE_URL=your_postgresql_database_url
+Responsive media queries were implemented to make the interface usable on desktop, tablet, and mobile screen sizes.
 
-Do not commit actual database credentials to GitHub.
-5. Run the Backend
-uvicorn main:app --reload
+### JavaScript
 
-The backend will be available at:
-http://127.0.0.1:8002
+JavaScript was used to add interactivity to the application, including:
 
-Running Tests
-Navigate to the backend directory and run:
-pytest
+* Navigation between sections
+* Room searching
+* Room filtering
+* Adding rooms
+* Updating room information
+* Booking interactions
+* Modal forms
+* Booking management
+* Cancelling bookings
+* Updating displayed information dynamically
 
-The current backend test suite contains 22 API tests.
-Expected result:
-22 passed
+## Backend Development
 
-The tests cover:
-- Room creation
-- Room retrieval
-- Invalid room data
-- Room updates
-- Room deletion
-- Booking creation
-- Invalid booking dates
-- Non-existing rooms
-- Booking conflicts
-- Room availability
-- Booking history
-- Booking summary
-- Booking cancellation
-- Error handling
+The backend was developed using Python and FastAPI.
 
-Booking Conflict Detection
-The system prevents overlapping active bookings for the same room.
-The conflict condition is:
-existing_check_in < requested_check_out
-AND
-existing_check_out > requested_check_in
+FastAPI provides REST API endpoints for managing hotel rooms and bookings.
 
-Cancelled bookings are excluded from conflict detection.
-This allows a new booking to begin on the same date that an earlier booking ends.
+SQLAlchemy was used as the ORM layer to communicate with the PostgreSQL database.
 
-Error Handling
-The API uses standard HTTP status codes.
-Status Code	Description
-200	Successful request
-201	Resource created
-204	Resource deleted successfully
-400	Invalid request
-404	Resource not found
-409	Booking conflict
-422	Validation error
-
-
-Security Considerations
-Database configuration is stored using environment variables instead of hard-coding credentials in source code.
-Pydantic validation is used to validate API input.
-SQLAlchemy ORM is used for database operations.
-Authentication and authorization are not included in the current implementation and can be added as a future enhancement.
+The basic architecture follows:
 
 Frontend
-The frontend is built using:
-- HTML
-- CSS
-- JavaScript
-The frontend contains multiple views for room management, booking operations, and booking management.
-The frontend was developed as a responsive web interface.
-Frontend and backend integration will use REST API communication through JavaScript asynchronous requests.
+   ↓
+JavaScript API Requests
+   ↓
+FastAPI
+   ↓
+SQLAlchemy
+   ↓
+PostgreSQL
 
-Current Project Status
-Completed
-- Frontend pages
-- Room management UI
-- Booking UI
-- Booking management UI
-- FastAPI backend
-- PostgreSQL database
-- SQLAlchemy models
-- REST APIs
-- Validation
-- Error handling
-- API testing
-- API documentation
 
-Future Enhancements
-- Frontend and backend integration
-- Authentication and authorization
-- Improved booking status management
-- Deployment to a public hosting platform
-- Logging and monitoring
-- Additional automated frontend and integration tests
+The frontend communicates with the FastAPI backend through API requests. The backend processes the request, interacts with the database using SQLAlchemy, and returns the required response.
 
-Author
-Aysha Nasrin
-BCA Graduate | Full Stack Python Developer
+## Database
 
-License
-This project was developed as part of an internship project for educational and practical development purposes.
+PostgreSQL is used as the persistent database for the application.
+
+SQLAlchemy models are used to represent the application's database entities and their relationships.
+
+The database stores information related to hotel rooms and bookings.
+
+## Navigation
+
+The application uses a single-page navigation system.
+
+The three primary navigation sections are:
+
+* Room Catalog — for viewing and managing rooms
+* Booking — for creating new bookings
+* Booking Management — for viewing and managing existing bookings
+
+JavaScript is used to switch between these sections dynamically.
+
+## Responsive Design
+
+Responsive CSS media queries were used to ensure that the application adapts to different screen sizes.
+
+The interface was tested on:
+
+* Desktop
+* Tablet
+* Mobile
+
+The layout, navigation, forms, room cards, and booking information were adjusted to remain usable across different screen sizes.
+
+## Testing
+
+The application was tested using common hotel management scenarios:
+
+* Adding rooms
+* Updating room information
+* Searching for rooms
+* Filtering rooms
+* Creating bookings
+* Viewing booking records
+* Cancelling bookings
+* Checking room availability
+* Testing navigation
+* Testing responsive layouts
+* Testing frontend and backend API interaction
+
+## How to Run
+
+### Backend
+
+Open the backend folder:
+
+```bash
+cd backend
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment on Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the FastAPI server:
+
+```bash
+uvicorn main:app --reload --port 8002
+```
+
+The API will be available at:
+
+```text
+http://127.0.0.1:8002
+```
+
+FastAPI interactive documentation:
+
+```text
+http://127.0.0.1:8002/docs
+```
+
+### Frontend
+
+Open the `frontend` folder and run `index.html` using a local development server such as VS Code Live Server.
+
+## Future Improvements
+
+The following features can be added in future versions:
+
+* User authentication
+* Role-based access
+* Online payment integration
+* Email booking confirmation
+* Advanced dashboard analytics
+* Improved booking validation
+* Cloud deployment
+* React-based frontend
+
+## Conclusion
+
+The Hotel Room Booking System demonstrates the development of a full-stack web application using HTML, CSS, JavaScript, FastAPI, SQLAlchemy, and PostgreSQL.
+
+The project covers frontend interface development, single-page navigation, JavaScript interactivity, REST API development, database integration, room management, and booking management.
+
+The project also provides a foundation for future improvements such as authentication, online payments, analytics, deployment, and migration of the frontend to React.
