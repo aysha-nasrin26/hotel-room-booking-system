@@ -256,3 +256,6 @@ The Hotel Room Booking System demonstrates the development of a full-stack web a
 The project covers frontend interface development, single-page navigation, JavaScript interactivity, REST API development, database integration, room management, and booking management.
 
 The project also provides a foundation for future improvements such as authentication, online payments, analytics, deployment, and migration of the frontend to React.
+
+##Project video URL
+https://drive.google.com/drive/folders/19vc6VRg5KZ5UIpKAXWiOMb40UN5R3vyG?usp=sharing
