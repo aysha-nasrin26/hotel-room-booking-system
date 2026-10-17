@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import date
 from typing import List, Optional, Literal
 
@@ -23,14 +23,20 @@ class RoomResponse(BaseModel):
     capacity: int
     status: str
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class BookingCreate(BaseModel):
     room_id: int
     user_id: int
     check_in: date
     check_out: date
+
+class RoomMinInfo(BaseModel):
+    room_number: str
+    room_type: str
+    price_per_night: float
+
+    model_config = ConfigDict(from_attributes=True)
 
 class BookingResponse(BaseModel):
     id: int
@@ -39,21 +45,11 @@ class BookingResponse(BaseModel):
     check_in: date
     check_out: date
     is_cancelled: bool
-    room: Optional[RoomMinInfo] = None 
+    room: Optional[RoomMinInfo] = None
 
-
-    class Config:
-        from_attributes = True # Pydantic v2 configuration style
+    model_config = ConfigDict(from_attributes=True)
 
 class RoomAvailabilityResponse(BaseModel):
     room_id: int
     is_available: bool
     conflicting_bookings_count: int
-    
-class RoomMinInfo(BaseModel):
-    room_number: str
-    room_type: str
-    price_per_night: float
-
-    class Config:
-        from_attributes = True

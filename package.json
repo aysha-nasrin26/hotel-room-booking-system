@@ -1,0 +1,26 @@
+{
+  "name": "hotel_room_booking_system",
+  "version": "1.0.0",
+  "description": "The Hotel Room Booking System is a web application developed to manage hotel rooms and guest bookings. The application provides a single-page frontend with navigation between Room Catalog, Booking, and Booking Management sections.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aysha-nasrin26/hotel-room-booking-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aysha-nasrin26/hotel-room-booking-system/issues"
+  },
+  "homepage": "https://github.com/aysha-nasrin26/hotel-room-booking-system#readme",
+  "devDependencies": {
+    "cypress": "^16.2.0",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2"
+  }
+}

@@ -1,258 +1,250 @@
 # Hotel Room Booking System
 
+A full-stack Hotel Room Booking System built using **HTML, CSS, JavaScript, Python, FastAPI, SQLAlchemy, and PostgreSQL**. This project provides a simple interface for browsing rooms, managing room information, and creating and managing hotel bookings.
+
 ## Project Overview
 
-The Hotel Room Booking System is a web application developed to manage hotel rooms and guest bookings. The application provides a single-page frontend with navigation between Room Catalog, Booking, and Booking Management sections.
-
-The system allows users to view and manage rooms, create bookings, and manage existing booking records through an interactive web interface.
+The Hotel Room Booking System connects a JavaScript frontend with a FastAPI backend and PostgreSQL database. It demonstrates REST API integration, database operations, input validation, booking management, and frontend functional testing.
 
 ## Features
 
 ### Room Catalog
-
-* View available hotel rooms
-* Search rooms by room number
-* Filter rooms by room type
-* Filter rooms by room status
-* Add new rooms
-* Update room details
-* Display room availability status
-
-### Booking
-
-* Select a room
-* Enter guest details
-* Select check-in and check-out dates
-* View booking information
-* Confirm bookings
+- View available hotel rooms.
+- Search and filter rooms.
+- Display room information dynamically.
+- Add and update room details through the supported backend APIs.
 
 ### Booking Management
+- Create hotel bookings.
+- View booking records and booking history.
+- Cancel bookings.
+- Check room availability before confirming a booking.
+- Detect conflicting bookings through backend validation.
 
-* View booking records
-* View booking status
-* Cancel bookings
-* Manage room booking information
+### User Interface
+- Single-page interface with Room Catalog, Booking, and Booking Management sections.
+- Responsive layout for different screen sizes.
+- Dynamic room cards and form interactions.
+- Toast notifications for user feedback.
+
+### Backend and Database
+- REST APIs developed using FastAPI.
+- Request and response validation using Pydantic.
+- SQLAlchemy ORM for database operations.
+- PostgreSQL for persistent data storage.
+- Swagger UI for API exploration and testing.
 
 ## Technologies Used
 
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-
-### Backend
-
-* Python
-* FastAPI
-* SQLAlchemy
-
-### Database
-
-* PostgreSQL
-
-### Development Tools
-
-* Visual Studio Code
-* Git
-* GitHub
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page structure |
+| CSS3 | Styling and responsive design |
+| JavaScript | Frontend functionality and API integration |
+| Python | Backend programming |
+| FastAPI | REST API development |
+| Pydantic | Request and response validation |
+| SQLAlchemy | Database ORM |
+| PostgreSQL | Relational database |
+| Jest and JSDOM | Frontend functional testing |
+| Cypress | Browser-based end-to-end testing |
+| Git and GitHub | Version control and project hosting |
 
 ## Project Structure
 
+```text
 hotel-room-booking-system/
-
+│
 ├── backend/
 │   ├── main.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── database.py
-│   ├── requirements.txt
-│   └── .gitignore
+│   └── requirements.txt
 │
 ├── frontend/
 │   ├── index.html
 │   ├── css/
-│   │   └── style.css
+│   │   ├── style.css
+│   │   └── responsive.css
 │   └── js/
 │       └── app.js
 │
-└── README.md
+├── app.test.js
+├── booking_flow.cy.js
+├── README.md
+└── .gitignore
+```
 
-## Frontend Development
+*Note: The exact test-file locations may differ depending on the current repository structure.*
 
-The frontend was developed using HTML5, CSS3, and JavaScript.
+## Installation and Setup
 
-The application follows a single-page layout with three main navigation sections:
+### Prerequisites
 
-1. Room Catalog
-2. Booking
-3. Booking Management
+Install the following before running the project:
 
-Users can navigate between these sections without opening separate HTML pages.
+- Python
+- PostgreSQL
+- Node.js and npm, for frontend testing
+- Visual Studio Code
+- VS Code Live Server extension
 
-### HTML
+### 1. Clone the Repository
 
-HTML5 was used to create the structure of the application, including navigation, room cards, forms, tables, buttons, and booking-related sections.
+```bash
+git clone https://github.com/aysha-nasrin26/hotel-room-booking-system.git
+cd hotel-room-booking-system
+```
 
-### CSS
+### 2. Set Up the Backend
 
-CSS3 was used for layout, styling, spacing, forms, buttons, room cards, tables, and responsive design.
-
-Responsive media queries were implemented to make the interface usable on desktop, tablet, and mobile screen sizes.
-
-### JavaScript
-
-JavaScript was used to add interactivity to the application, including:
-
-* Navigation between sections
-* Room searching
-* Room filtering
-* Adding rooms
-* Updating room information
-* Booking interactions
-* Modal forms
-* Booking management
-* Cancelling bookings
-* Updating displayed information dynamically
-
-## Backend Development
-
-The backend was developed using Python and FastAPI.
-
-FastAPI provides REST API endpoints for managing hotel rooms and bookings.
-
-SQLAlchemy was used as the ORM layer to communicate with the PostgreSQL database.
-
-The basic architecture follows:
-
-Frontend
-   ↓
-JavaScript API Requests
-   ↓
-FastAPI
-   ↓
-SQLAlchemy
-   ↓
-PostgreSQL
-
-
-The frontend communicates with the FastAPI backend through API requests. The backend processes the request, interacts with the database using SQLAlchemy, and returns the required response.
-
-## Database
-
-PostgreSQL is used as the persistent database for the application.
-
-SQLAlchemy models are used to represent the application's database entities and their relationships.
-
-The database stores information related to hotel rooms and bookings.
-
-## Navigation
-
-The application uses a single-page navigation system.
-
-The three primary navigation sections are:
-
-* Room Catalog — for viewing and managing rooms
-* Booking — for creating new bookings
-* Booking Management — for viewing and managing existing bookings
-
-JavaScript is used to switch between these sections dynamically.
-
-## Responsive Design
-
-Responsive CSS media queries were used to ensure that the application adapts to different screen sizes.
-
-The interface was tested on:
-
-* Desktop
-* Tablet
-* Mobile
-
-The layout, navigation, forms, room cards, and booking information were adjusted to remain usable across different screen sizes.
-
-## Testing
-
-The application was tested using common hotel management scenarios:
-
-* Adding rooms
-* Updating room information
-* Searching for rooms
-* Filtering rooms
-* Creating bookings
-* Viewing booking records
-* Cancelling bookings
-* Checking room availability
-* Testing navigation
-* Testing responsive layouts
-* Testing frontend and backend API interaction
-
-## How to Run
-
-### Backend
-
-Open the backend folder:
+Open a terminal in the project directory and run:
 
 ```bash
 cd backend
-```
-
-Create a virtual environment:
-
-```bash
 python -m venv venv
 ```
 
-Activate the virtual environment on Windows:
+Activate the virtual environment on Windows PowerShell:
 
-```bash
-venv\Scripts\activate
+```powershell
+.\venv\Scripts\Activate.ps1
 ```
 
-Install the dependencies:
+Install the required Python packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the FastAPI server:
+### 3. Configure PostgreSQL
+
+1. Start your PostgreSQL server.
+2. Create the database required by the application.
+3. Configure the database connection using the settings expected by `backend/database.py`.
+4. Ensure that your database credentials are correct.
+
+**Security note:** Keep database passwords and other secrets out of source control. Use environment variables or an appropriate local configuration file if the application supports them.
+
+### 4. Start the FastAPI Server
+
+From the `backend` directory, run:
 
 ```bash
 uvicorn main:app --reload --port 8002
 ```
 
-The API will be available at:
+The backend will be available at:
 
-```text
-http://127.0.0.1:8002
+- **API base URL:** http://127.0.0.1:8002
+- **Swagger API documentation:** http://127.0.0.1:8002/docs
+- **ReDoc documentation:** http://127.0.0.1:8002/redoc
+
+Use Swagger UI to inspect the available endpoints and test API requests.
+
+### 5. Run the Frontend
+
+1. Open the project in Visual Studio Code.
+2. Open `frontend/index.html`.
+3. Start the page using the Live Server extension.
+4. Confirm that the frontend is running on the configured port, such as `5500`.
+5. Ensure the API base URL in `frontend/js/app.js` matches the backend address.
+6. If the browser reports CORS errors, verify the backend CORS configuration.
+
+The frontend and backend must both be running for the complete application to work.
+
+## Testing
+
+### Frontend Functional Tests
+
+Install the Node.js dependencies specified by the project's `package.json`, if present. From the project root, run:
+
+```bash
+npx jest app.test.js
 ```
 
-FastAPI interactive documentation:
+The frontend functional tests cover areas such as:
 
-```text
-http://127.0.0.1:8002/docs
+- Dynamic room-card rendering.
+- Room filtering.
+- Booking-night calculations.
+- Edit-room form values.
+- Error handling and room-loading failures.
+
+**Reported result:** Seven frontend functional tests passed in the local Jest run.
+
+### Cypress End-to-End Tests
+
+If Cypress and the project configuration are installed, open Cypress using:
+
+```bash
+npx cypress open
 ```
 
-### Frontend
+Then select:
 
-Open the `frontend` folder and run `index.html` using a local development server such as VS Code Live Server.
+1. **E2E Testing**
+2. Your configured browser, such as Microsoft Edge
+3. The `booking_flow.cy.js` specification
+
+Run the test and verify the booking workflow in the browser. Record the final result only after the current test run completes successfully.
+
+### API Testing
+
+Open http://127.0.0.1:8002/docs to test the backend endpoints.
+
+Verify room listing, room availability, booking creation, booking history, and cancellation using valid and invalid inputs.
+
+## Debugging and Integration
+
+During integration and testing, the following issues were identified for review:
+
+- **Pydantic configuration:** A response schema mixed legacy Pydantic v1 `class Config` settings with Pydantic v2 `model_config`. The schema configuration was standardized to avoid conflicts.
+- **Cypress toast selector:** The selector `#toastRegion.toast` was corrected to `#toastRegion .toast` to target a toast element inside its container.
+- **Frontend and backend connectivity:** The frontend API URL, backend port, database connection, and request/response handling should be verified during local setup.
+
+### API Response-Time Observations
+
+The following timings were reported during local testing. They are environment-dependent observations, not production performance benchmarks.
+
+| API operation | Reported response time |
+|---|---:|
+| `GET /rooms?limit=100&skip=0` | 48.50 ms |
+| `GET /bookings/history` | 62.10 ms |
+| `GET /rooms/1/availability` | 35.80 ms |
+
+Response times may vary depending on the database contents, hardware, network conditions, and server configuration.
+
+## 🔒 Best Practices
+
+- Do not commit database passwords or private credentials.
+- Keep the virtual environment and generated cache files out of Git.
+- Validate API inputs and handle errors clearly.
+- Test both successful and unsuccessful booking scenarios.
+- Verify frontend and backend integration before submission.
 
 ## Future Improvements
 
-The following features can be added in future versions:
+- Add user registration and login.
+- Introduce role-based access for administrators and customers.
+- Add payment integration.
+- Improve booking search and date selection.
+- Add automated backend integration tests.
+- Deploy the application to a cloud hosting platform.
 
-* User authentication
-* Role-based access
-* Online payment integration
-* Email booking confirmation
-* Advanced dashboard analytics
-* Improved booking validation
-* Cloud deployment
-* React-based frontend
+## Learning Outcomes
 
-## Conclusion
+This project provides practical experience in full-stack development, REST API integration, database connectivity, SQLAlchemy ORM, Pydantic validation, frontend testing, debugging, and technical documentation.
 
-The Hotel Room Booking System demonstrates the development of a full-stack web application using HTML, CSS, JavaScript, FastAPI, SQLAlchemy, and PostgreSQL.
+## Author
 
-The project covers frontend interface development, single-page navigation, JavaScript interactivity, REST API development, database integration, room management, and booking management.
+**Aysha Nasrin**
 
-The project also provides a foundation for future improvements such as authentication, online payments, analytics, deployment, and migration of the frontend to React.
+BCA Graduate | Python Backend Development | FastAPI | SQL | Full-Stack Projects
+
+GitHub: https://github.com/aysha-nasrin26
+
+---
+
+*This project was developed as part of hands-on internship work to strengthen practical full-stack development and software testing skills.*
