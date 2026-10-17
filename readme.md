@@ -241,10 +241,7 @@ This project provides practical experience in full-stack development, REST API i
 
 **Aysha Nasrin**
 
-BCA Graduate | Python Backend Development | FastAPI | SQL | Full-Stack Projects
+The project also provides a foundation for future improvements such as authentication, online payments, analytics, deployment, and migration of the frontend to React.
 
-GitHub: https://github.com/aysha-nasrin26
-
----
-
-*This project was developed as part of hands-on internship work to strengthen practical full-stack development and software testing skills.*
+##Project video URL
+https://drive.google.com/drive/folders/19vc6VRg5KZ5UIpKAXWiOMb40UN5R3vyG?usp=sharing
