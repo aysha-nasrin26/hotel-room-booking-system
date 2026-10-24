@@ -97,7 +97,19 @@ The Pydantic configuration defect was addressed. To close the verification recor
 - [ ] Attach available test evidence and ensure README instructions match the current project.
 - [ ] Exclude credentials, `.env` files, virtual environments, and generated cache folders from the submission package.
 
-## 5. Conclusion
+### 5.Deployment Issue: Frontend–Backend CORS Configuration
+
+**Symptom:** The deployed frontend encountered a cross-origin request issue while communicating with the deployed FastAPI backend.
+
+**Root cause:** The backend CORS configuration needed to allow the deployed frontend origin.
+
+**Resolution:** Updated the backend CORS middleware to allow the deployed frontend origin and the required HTTP methods and headers.
+
+**Verification:** After the configuration change and a browser refresh, room creation was reported to work successfully.
+
+**Maintenance note:** Re-test frontend API calls after future deployment or CORS changes. CORS configuration alone does not provide authentication or authorization.
+
+## Conclusion
 
 Week 5 focused on resolving application configuration and test-selector defects, validating frontend behaviour, checking browser-based end-to-end workflows, and recording local API response-time observations.
 
