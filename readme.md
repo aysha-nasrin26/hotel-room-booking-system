@@ -245,3 +245,27 @@ The project also provides a foundation for future improvements such as authentic
 
 ##Project video URL
 https://drive.google.com/drive/folders/19vc6VRg5KZ5UIpKAXWiOMb40UN5R3vyG?usp=sharing
+
+# Hotel Room Booking System — Week 6 Submission
+
+## Project overview
+A full-stack hotel room booking application with a JavaScript frontend, FastAPI backend, and PostgreSQL database. Features include room management, booking creation, availability checks, booking history, cancellation, and booking summary.
+
+## Deployed services
+- Frontend: https://hotel-room-booking-frontend-757k.onrender.com/
+- Backend API docs: https://hotel-room-booking-system-ja5q.onrender.com/docs
+- Backend room endpoint: https://hotel-room-booking-system-ja5q.onrender.com/rooms
+
+The frontend and backend have separate public URLs because they are deployed as separate Render services.
+
+## ZIP contents
+- `DEPLOYMENT_GUIDE.md` — deployment and troubleshooting instructions
+- `MAINTENANCE_PLAN.md` — monitoring, logging, backups, and updates
+- `UAT_TEST_REPORT.md` — user acceptance testing scenarios and reported results
+- `PROJECT_REFLECTION.md` — lessons learned and future improvements
+
+## Before submission
+1. Open both deployed services and confirm they are accessible.
+2. Keep a test marked Passed only if you personally observed it working.
+3. Add screenshots of the website and test results if required by the evaluator.
+4. Confirm that no `.env` file, database password, API key, or other secret is included in any source ZIP.
