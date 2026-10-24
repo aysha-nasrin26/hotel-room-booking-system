@@ -1,7 +1,7 @@
 "use strict";
 
 // Must match the port used by FastAPI. CORS must also be configured in main.py.
-const API_BASE_URL = "http://127.0.0.1:8002";
+const API_BASE_URL = "https://hotel-room-booking-system-ja5q.onrender.com";
 let rooms = [], bookings = [], selectedRoom = null, currentEditingRoomId = null, availabilityCheckedFor = "";
 const $ = id => document.getElementById(id);
 const e = {
